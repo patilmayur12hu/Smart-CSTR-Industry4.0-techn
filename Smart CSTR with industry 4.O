@@ -1,2 +1,73 @@
 # Smart-CSTR-Industry4.0-techn
-Simulation of Smart CSTR with Industry 4.0 components
+Simulation of Smart CSTR with Industry 4.0 component
+
+
+# 💡 Smart Optimization of a CSTR-Based Esterification Process Using Industry 4.0 Technologies
+
+This project simulates and optimizes a Continuous Stirred Tank Reactor (CSTR) performing an esterification reaction using Industry 4.0 tools such as IoT, AI/ML, and Digital Twin technologies.
+
+---
+
+## 📘 Project Overview
+
+- **Title:** Smart Optimization of a CSTR-Based Esterification Process Using Industry 4.0 Technologies  
+- **Author:** Mayur Datturao Patil  
+- **Supervisor:** Dr. Rajkumar Sirsam  
+- **Institute:** University Institute of Chemical Technology, Jalgaon  
+- **Course:** CHC-313: Process Engineering Project  
+
+---
+
+## 📂 Contents
+
+| Folder/File | Description |
+|-------------|-------------|
+| `report/` | Full project report in PDF and Word format |
+| `presentation/` | PowerPoint slides in PPTX and PDF formats |
+| `code/` | Python code for sensor simulation, ML prediction, and dashboard |
+| `certificate/` | Project completion certificate with photo |
+| `acknowledgement/` | Acknowledgement page |
+| `poster/` | Poster in A3 and A4 printable formats |
+| `README.md` | This readme file |
+
+---
+
+## 🔧 Technologies Used
+
+- **Reactor:** Continuous Stirred Tank Reactor (CSTR)
+- **Process:** Esterification Reaction
+- **Simulation Tools:** Python (Random Forest, Dash, Matplotlib), Simulink (optional)
+- **Industry 4.0 Components:**
+  - IoT (Simulated sensors)
+  - AI/ML (Conversion prediction)
+  - Digital Twin (Process replica via simulation)
+  - Cloud (Dashboard ready)
+  - Automation & Control (PID with AI hints)
+
+---
+
+## 📊 Python Features
+
+- Sensor simulation for **flow rate** and **temperature**
+- Machine Learning model (Random Forest) to predict **conversion**
+- Dashboard built with **Plotly Dash** showing:
+  - Temperature vs. Conversion
+  - Flow rate vs. Conversion
+  - 3D Surface Plot
+
+---
+
+## 🚀 How to Run
+
+```bash
+1. Install requirements:
+   pip install pandas matplotlib scikit-learn dash
+
+2. Run sensor simulation:
+   python sensor_simulation.py
+
+3. Train model:
+   python model_training.py
+
+4. Launch dashboard:
+   python dashboard.py
