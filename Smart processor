@@ -1,1 +1,107 @@
+Sensors_simulation_py
+Simulate temperature and flow sensor data
+import csv
+import random
+import time
 
+def generate_sensor_data():
+    with open("sample_data.csv", mode="w", newline="") as file:
+            writer = csv.writer(file)
+                    writer.writerow(["Temperature", "FlowRate", "Conversion"])
+                            for _ in range(100):
+                                        temp = random.uniform(50, 80)  # °C
+                                                    flow = random.uniform(0.5, 2.0)  # L/min
+                                                                # Simulated conversion (fake formula for demo)
+                                                                            conversion = max(0, min(100, 90 - (flow * 10) + ((temp - 60) * 1.5)))
+                                                                                        writer.writerow([round(temp, 2), round(flow, 2), round(conversion, 2)])import pandas as pd
+                                                                                        from sklearn.ensemble import RandomForestRegressor
+                                                                                        from sklearn.model_selection import train_test_split
+                                                                                        import joblib
+
+                                                                                        # Load data
+                                                                                        df = pd.read_csv("sample_data.csv")
+                                                                                        X = df[["Temperature", "FlowRate"]]
+                                                                                        y = df["Conversion"]
+
+                                                                                        # Train/test split
+                                                                                        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+                                                                                        # Train model
+                                                                                        model = RandomForestRegressor(n_estimators=100, random_state=42)
+                                                                                        model.fit(X_train, y_train)
+
+                                                                                        # Save model
+                                                                                        joblib.dump(model, "conversion_model.pkl")
+                                                                                        print("Model saved as conversion_model.pkl")
+                                                                                                    time.sleep(0.05)  # optional delay
+
+                                                                                                    print("Generating sensor data...generate_sensor_data()
+                                                                                                    print("Data saved to sample_data.csv
+
+Model_training_py
+
+Trains a random forest model on the simulated data
+RandomForestRegressor
+from sklearn.model_selection import train_test_split
+import joblib
+
+# Load data
+df = pd.read_csv("sample_data.csv")
+X = df[["Temperature", "FlowRate"]]
+y = df["Conversion"]
+
+# Train/test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train model
+model = RandomForestRegressor(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Save model
+joblib.dump(model, "conversion_model.pkl")
+print("Model saved as conversion_model.pkl")
+
+Dashboard_py
+Interactive dashboard to visualise prediction
+import joblib
+import numpy as np
+
+model = joblib.load("conversion_model.pkl")
+
+app = dash.Dash(__name__)
+app.layout = html.Div([
+        html.H1("CSTR Conversion Predictor"),
+            
+                html.Label("Temperature (°C):"),
+                    dcc.Slider(id='temp', min=50, max=80, step=1, value=65),
+                        
+                            html.Label("Flow Rate (L/min):"),
+                                dcc.Slider(id='flow', min=0.5, max=2.0, step=0.1, value=1.0),
+                                    
+                                        html.Br(),
+                                            html.Div(id="prediction-output")
+])
+
+@app.callback(
+        dash.dependencies.Output("prediction-output", "children"),
+            [
+                        dash.dependencies.Input("temp", "value"),
+                                dash.dependencies.Input("flow", "value")
+            ]
+)
+def update_prediction(temp, flow):
+    pred = model.predict([[temp, flow]])[0]
+        return f"Predicted Conversion: {pred:.2f}%"
+
+        if __name__ == "__main__":
+            app.run_server(debug=True)
+            ]
+)
+])
+
+Sample _data .csv( example row)
+
+Temperature,FlowRate,Conversion
+65.2,1.2,78.9
+72.5,0.9,89.3
+...
